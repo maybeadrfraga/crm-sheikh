@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
                 <div class="mx-auto col-xl-4 col-lg-6 col-md-7">
-                    <div class=" card z-index-0">                        
+                    <div class=" card z-index-0 mb-7">                        
                         @if (session('status'))
                             <div class="mb-4 font-medium text-sm text-green-600">
                                 {{ session('status') }}
@@ -62,12 +62,7 @@
                                         class="px-3 mb-2 text-sm bg-white font-weight-bold text-secondary text-border d-inline z-index-2">
                                         Don't have an account?
                                     </p>
-                                </div>
-                                <div class="text-center">
-                                    <a href=" {{ route('register') }}">
-                                        <button type="button" class="mt-2 mb-4 btn btn-white w-100">Sign up</button>
-                                    </a>
-                                </div>
+                                </div>                                
                                 <p class="mt-3 mb-0 mb-2 text-sm text-center">Forgot your password? <a
                                         href="forgot-password" class="text-dark font-weight-bolder">Recover here!</a>
                                 </p>
