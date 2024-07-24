@@ -14,7 +14,7 @@ class AddWebsiteAndLogoToCompaniesTable extends Migration
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->string('website')->nullable()->after('description');
+            $table->string('website')->nullable()->after('address');
             $table->string('logo')->nullable()->after('website');
         });
     }
