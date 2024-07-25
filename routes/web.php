@@ -31,8 +31,14 @@ Route::get('/', function () {
     return redirect('/dashboard');
 })->middleware('auth');
 
+Route::get('/dash', [CompanyController::class, 'dash'])
+    ->middleware('auth')
+    ->name('dash');
+
+
 Route::resource('companies', CompanyController::class);
 Route::resource('expenses', ExpenseController::class);
+
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Expense;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -61,6 +62,13 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
     }
+
+    public function dash()
+{
+    $expenses = Expense::with('company')->get();
+    // dd($expenses);
+    return view('static-pages.dashboards.default', compact('expenses'));
+}
 
     public function destroy(Company $company)
     {
