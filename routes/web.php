@@ -28,7 +28,7 @@ use App\Http\Controllers\ExpenseController;
 
 
 Route::get('/', function () {
-    return redirect('/dashboard');
+    return redirect('/dash');
 })->middleware('auth');
 
 Route::get('/dash', [CompanyController::class, 'dash'])
