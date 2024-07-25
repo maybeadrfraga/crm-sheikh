@@ -11,6 +11,7 @@
                     <div class="mb-3 mb-md-0">
                         <h3 class="mb-0 font-weight-bold">Hello, {{ auth()->user()->name }}</h3>
                         <p class="mb-0">Welcome back to Sheikhdom Portal!</p>
+                        <h3 class="mb-0 font-weight-bold">Total Expense: ${{ $totalSpending }}</h3>
                     </div>
                 </div>
             </div>

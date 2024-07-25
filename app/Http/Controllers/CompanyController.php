@@ -83,7 +83,7 @@ class CompanyController extends Controller
             $company->spending_percentage = $totalSpending > 0 ? ($companyTotalSpending / $totalSpending) * 100 : 0;
         }        
 
-        return view('static-pages.dashboards.default', compact('user', 'allExpenses', 'recentExpenses', 'companies'));
+        return view('static-pages.dashboards.default', compact('user', 'totalSpending', 'allExpenses', 'recentExpenses', 'companies'));
 
     }
 
