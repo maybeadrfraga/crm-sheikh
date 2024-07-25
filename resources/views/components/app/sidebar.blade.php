@@ -13,7 +13,7 @@
            
             <!-- DASHBOARD -->
             <li class="nav-item p-1">
-            <a href="{{ route('default') }}" class="nav-link text-white opacity-10"
+            <a href="{{ route('dash') }}" class="nav-link text-white opacity-10"
                     aria-controls="finance" role="button">
                     <i class="fa fa-home"></i>                    
                     <span class="nav-link-text ms-2">Dashboard</span>
