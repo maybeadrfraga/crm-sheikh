@@ -68,7 +68,20 @@ class CompanyController extends Controller
         $user = auth()->user();
         $allExpenses = Expense::with('company')->get();
         $recentExpenses = Expense::with('company')->orderBy('date', 'desc')->take(5)->get();
-        $companies = Company::all();
+        // $companies = Company::all();
+        $companies = Company::with('expenses')->get();
+
+        // Calcular o total dos gastos
+        $totalSpending = $companies->sum(function ($company) {
+            return $company->expenses->sum('amount');
+        });
+
+        // Adicionar a porcentagem ao objeto da empresa
+        foreach ($companies as $company) {
+            $companyTotalSpending = $company->expenses->sum('amount');
+            $company->total_spending = $companyTotalSpending;
+            $company->spending_percentage = $totalSpending > 0 ? ($companyTotalSpending / $totalSpending) * 100 : 0;
+        }        
 
         return view('static-pages.dashboards.default', compact('user', 'allExpenses', 'recentExpenses', 'companies'));
 
