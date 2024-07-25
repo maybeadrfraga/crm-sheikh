@@ -14,7 +14,7 @@
                     </div>
                     <button type="button" class="mb-0 mb-2 btn btn-sm btn-white btn-icon d-flex align-items-center ms-md-auto mb-sm-0 me-2">
                         <span class="btn-inner--icon">
-                            <span class="p-1 bg-success rounded-circle d-flex ms-auto me-2">
+                            <span class="p-1 bg-success  d-flex ms-auto me-2">
                                 <span class="visually-hidden">New</span>
                             </span>
                         </span>
@@ -52,7 +52,7 @@
                                         <tr>
                                             <td>
                                                 <div class="px-2 d-flex">
-                                                    <div class="my-2 avatar avatar-sm rounded-circle me-2">
+                                                    <div class="my-2 avatar avatar-sm  me-2">
                                                     <img src="{{ $company->logo ? asset('storage/' . $company->logo) : asset('assets/img/apple-icon.png') }}" class="w-100" alt="{{ $company->name }}">
 
                                                     </div>
@@ -81,14 +81,14 @@
                                 </div>
                                 <div class="ms-auto d-flex">
                                     <button type="button" class="mb-0 btn btn-sm btn-white me-2">View report</button>
-                                    <button type="button" class="mb-0 btn btn-sm btn-dark btn-icon d-flex align-items-center">
+                                    <!-- <button type="button" class="mb-0 btn btn-sm btn-dark btn-icon d-flex align-items-center">
                                         <span class="btn-inner--icon">
                                             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="d-block me-2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                             </svg>
                                         </span>
                                         <span class="btn-inner--text">Download</span>
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                             <div class="pb-3 d-sm-flex align-items-center">
@@ -112,7 +112,7 @@
                                         <tr>                                            
                                             <td>
                                                 <div class="px-2 d-flex">
-                                                    <div class="my-2 avatar avatar-sm rounded-circle me-2">
+                                                    <div class="my-2 avatar avatar-sm  me-2">
                                                     <img src="{{ $expense->company->logo ? asset('storage/' . $expense->company->logo) : asset('assets/img/apple-icon.png') }}" class="w-100" alt="{{ $expense->company->name }}">
 
                                                     </div>
@@ -181,7 +181,7 @@
                                         <tr>
                                             <td>
                                                 <div class="px-2 d-flex">
-                                                    <div class="my-2 avatar avatar-sm rounded-circle me-2">
+                                                    <div class="my-2 avatar avatar-sm  me-2">
                                                     <img src="{{ $expense->company->logo ? asset('storage/' . $expense->company->logo) : asset('assets/img/apple-icon.png') }}" class="w-100" alt="{{ $expense->company->name }}">
 
                                                     </div>
