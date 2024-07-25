@@ -23,7 +23,7 @@
                         <div class="pb-0 card-header border-bottom">
                             <h6 class="mb-0 text-lg font-weight-semibold">Companies</h6>
                         </div>
-                        <div class="px-0 py-0 card-body">                        
+                        <div class="px-0 py-0 card-body">
                             <div class="p-0 table-responsive">
                                 <table id="companies-table"
                                     class="table mb-0 align-items-center justify-content-center">
@@ -37,7 +37,10 @@
                                                                 class="w-100" alt="{{ $company->name }}">
                                                         </div>
                                                         <div class="my-auto">
-                                                            <h6 class="mb-0 text-sm">{{ $company->name }}</h6>
+                                                            <a href="{{ route('companies.edit', $company->id) }}"
+                                                                class="text-dark text-decoration-none">
+                                                                <h6 class="mb-0 text-sm">{{ $company->name }}</h6>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -46,14 +49,15 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="chart-container">
-                                <canvas id="top-spending-chart" class="chart-canvas" height="300"></canvas>
-                            </div>
+                        </div>
+                        <div class="chart w-100">
+                            <canvas id="top-spending-chart" class="chart-canvas" height="300"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <!-- Col 2: Recent Transactions -->
+
+                <!-- Row 2: Recent Transactions -->
                 <div class="col-lg-8 col-md-6">
                     <div class="border shadow-xs card">
                         <div class="pb-0 card-header border-bottom">
@@ -113,7 +117,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <button
+                                                    <a href="{{ route('expenses.edit', $expense->id) }}"
                                                         class="mb-0 btn btn-sm btn-outline-secondary btn-icon d-flex align-items-center justify-content-center">
                                                         <span class="btn-inner--icon">
                                                             <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"
@@ -123,8 +127,8 @@
                                                                     d="M19.5 12h-15m0 0l5.25-5.25M4.5 12l5.25 5.25" />
                                                             </svg>
                                                         </span>
-                                                        <span class="ms-2 btn-inner--text">Details</span>
-                                                    </button>
+                                                        <span class="ms-2 btn-inner--text">Edit</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -134,6 +138,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Row 3: All Expenses -->
@@ -189,12 +194,15 @@
                                                                 class="w-100" alt="{{ $expense->company->name }}">
                                                         </div>
                                                         <div class="my-auto">
-                                                            <h6 class="mb-0 text-sm">{{ $expense->company->name }}</h6>
+                                                            <a href="{{ route('companies.show', $expense->company->id) }}"
+                                                                class="text-dark text-decoration-none">
+                                                                <h6 class="mb-0 text-sm">{{ $expense->company->name }}</h6>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <button
+                                                    <a href="{{ route('expenses.edit', $expense->id) }}"
                                                         class="mb-0 btn btn-sm btn-outline-secondary btn-icon d-flex align-items-center justify-content-center">
                                                         <span class="btn-inner--icon">
                                                             <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"
@@ -204,8 +212,8 @@
                                                                     d="M19.5 12h-15m0 0l5.25-5.25M4.5 12l5.25 5.25" />
                                                             </svg>
                                                         </span>
-                                                        <span class="ms-2 btn-inner--text">Details</span>
-                                                    </button>
+                                                        <span class="ms-2 btn-inner--text">Edit</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -215,14 +223,15 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
+
         </div>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var ctx = document.getElementById('top-spending-chart').getContext('2d');
-            
+
             // Function to generate a random color
             function getRandomColor() {
                 var letters = '0123456789ABCDEF';
@@ -232,7 +241,7 @@
                 }
                 return color;
             }
-            
+
             // Generate colors for each company
             var companyCount = @json($companies->count());
             var colors = [];
@@ -260,7 +269,7 @@
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(tooltipItem) {
+                                label: function (tooltipItem) {
                                     return tooltipItem.label + ': $' + tooltipItem.raw;
                                 }
                             }
