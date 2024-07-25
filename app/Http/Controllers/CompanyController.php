@@ -43,7 +43,7 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',            
+            'name' => 'required|string|max:255',
             'website' => 'nullable|url',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -64,11 +64,15 @@ class CompanyController extends Controller
     }
 
     public function dash()
-{
-    $expenses = Expense::with('company')->get();
-    // dd($expenses);
-    return view('static-pages.dashboards.default', compact('expenses'));
-}
+    {
+        $user = auth()->user();
+        $allExpenses = Expense::with('company')->get();
+        $recentExpenses = Expense::with('company')->orderBy('date', 'desc')->take(5)->get();
+        $companies = Company::all();
+
+        return view('static-pages.dashboards.default', compact('user', 'allExpenses', 'recentExpenses', 'companies'));
+
+    }
 
     public function destroy(Company $company)
     {
