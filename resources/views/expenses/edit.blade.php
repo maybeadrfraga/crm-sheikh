@@ -65,6 +65,7 @@
                                     Back to list
                                 </a>
                                 <button type="submit" class="mt-6 mb-0 btn btn-white btn-sm float-end">Save changes</button>
+                                <a href="{{ route('expenses.invoice', $expense->id) }}" class="mt-6 mb-0 btn btn-primary btn-sm float-end me-2">Generate Invoice</a>
                         </div>
                         </form>
                     </div>

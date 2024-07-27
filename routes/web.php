@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\KanbanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,10 @@ use App\Http\Controllers\ExpenseController;
 |
 */
 
+Route::get('/kanban/{companyId}', [KanbanController::class, 'show'])->name('kanban.show');
+Route::get('/kanban/view/{companyId}', [KanbanController::class, 'index'])->name('kanban.index');
+Route::get('/api/expenses', [KanbanController::class, 'getCalendar']);
+
 
 Route::get('/', function () {
     return redirect('/dash');
@@ -39,6 +44,7 @@ Route::get('/dash', [CompanyController::class, 'dash'])
 Route::resource('companies', CompanyController::class);
 Route::resource('expenses', ExpenseController::class);
 
+Route::get('/expenses/{id}/invoice', [ExpenseController::class, 'generateInvoice'])->name('expenses.invoice');
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')

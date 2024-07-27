@@ -1,333 +1,126 @@
 <x-app-layout>
-
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <x-app.navbar />
-        <div class="top-0 bg-cover z-index-n1 min-height-100 max-height-200 h-25 position-absolute w-100 start-0 end-0"
-            style="background-image: url('../../assets/img/header-blue-purple.jpg'); background-position: bottom;">
-        </div>
-        <div class="px-5 py-4 container-fluid">
-            <div class="mt-6 row">
-                <div class="col-xl-9">
-                    <div class="card blur card-calendar">
-                        <div class="pb-0 card-header">
-                            <h5 class="text-lg font-weight-semibold">Calendar</h5>
-                            <p><b>Tuesday 2022</b></p>
-                        </div>
-                        <div class="pt-0 card-body">
-                            <div class="calendar" data-bs-toggle="calendar" id="calendar"></div>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <x-app.navbar />
+            <div class="top-0 bg-cover z-index-n1 min-height-100 max-height-200 h-25 position-absolute w-100 start-0 end-0"
+                style="background-image: url('../../assets/img/header-blue-purple.jpg'); background-position: bottom;">
+            </div>
+            <div class="px-5 py-4 container-fluid">
+                <div class="mt-6 row">
+                    <div class="col-xl-12">
+                        <div class="card blur card-calendar">
+                            <div class="pb-0 card-header">
+                                <h5 class="text-lg font-weight-semibold">Calendar</h5>
+                                <p id="currentDate"><b>Loading...</b></p>
+                            </div>
+                            <div class="pt-0 card-body">
+                                <div class="calendar" id="calendar"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
-                    <div class="row">
-                        <div class="mt-4 col-xl-12 col-md-6 mt-xl-0">
-                            <div class="card blur">
-                                <div class="p-3 pb-0 card-header">
-                                    <h6 class="mb-0">Next events</h6>
-                                </div>
-                                <div class="p-3 card-body border-radius-lg">
-                                    <div class="d-flex">
-                                        <div>
-                                            <div
-                                                class="text-center shadow shadow-none icon icon-shape bg-danger-soft border-radius-md">
-                                                <i class="text-lg ni ni-money-coins text-danger  opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="ms-3">
-                                            <div class="numbers">
-                                                <h6 class="mb-1 text-sm text-dark">Cyber Week</h6>
-                                                <span class="text-sm">27 March 2021, at 12:30 PM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 d-flex">
-                                        <div>
-                                            <div
-                                                class="text-center shadow shadow-none icon icon-shape bg-info-soft border-radius-md">
-                                                <i class="text-lg ni ni-bell-55 text-info  opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="ms-3">
-                                            <div class="numbers">
-                                                <h6 class="mb-1 text-sm text-dark">Meeting with Marry</h6>
-                                                <span class="text-sm">24 March 2021, at 10:00 PM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 d-flex">
-                                        <div>
-                                            <div
-                                                class="text-center shadow shadow-none icon icon-shape bg-success-soft border-radius-md">
-                                                <i class="text-lg ni ni-books text-success  opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="ms-3">
-                                            <div class="numbers">
-                                                <h6 class="mb-1 text-sm text-dark">Book Deposit Hall</h6>
-                                                <span class="text-sm">25 March 2021, at 9:30 AM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 d-flex">
-                                        <div>
-                                            <div
-                                                class="text-center shadow shadow-none icon icon-shape bg-warning-soft border-radius-md">
-                                                <i class="text-lg ni ni-delivery-fast text-warning  opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="ms-3">
-                                            <div class="numbers">
-                                                <h6 class="mb-1 text-sm text-dark">Shipment Deal UK</h6>
-                                                <span class="text-sm">25 March 2021, at 2:00 PM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 d-flex">
-                                        <div>
-                                            <div
-                                                class="text-center shadow shadow-none icon icon-shape bg-primary-soft border-radius-md">
-                                                <i class="text-lg ni ni-palette text-primary  opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="ms-3">
-                                            <div class="numbers">
-                                                <h6 class="mb-1 text-sm text-dark">Verify Dashboard Color Palette</h6>
-                                                <span class="text-sm">26 March 2021, at 9:00 AM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 col-xl-12 col-md-6">
-                            <div class="card">
-                                <div class="p-3 pb-0 card-header">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <p class="mb-0 ">Tasks</p>
-                                            <h5 class="mb-0 ">480</h5>
-                                        </div>
-                                        <div class="col-5 d-flex align-items-center">
-                                            <div class="progress-wrapper w-100">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">60%</span>
-                                                    </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-dark w-60" role="progressbar"
-                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="chart-line-widgets" class="chart-canvas" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <x-app.footer />
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div class="modal fade" id="expenseModal" tabindex="-1" aria-labelledby="expenseModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="expenseModalLabel">Expense Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Company Name:</strong> <span id="modalCompanyName"></span></p>
+                        <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+                        <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-            <x-app.footer />
         </div>
-    </main>
 
-</x-app-layout>
-<script src="../../assets/js/plugins/fullcalendar.min.js"></script>
-<script>
-    if (document.getElementById("calendar")) {
-        let calendars = document.querySelectorAll("#calendar");
-        calendars.forEach(calendar => {
-            fullcalendar = new FullCalendar.Calendar(calendar, {
-                contentHeight: 'auto',
-                initialView: "dayGridMonth",
-                headerToolbar: {
-                    start: '', // will normally be on the left. if RTL, will be on the right
-                    center: '',
-                    end: '' // will normally be on the right. if RTL, will be on the left
-                },
-                selectable: true,
-                editable: true,
-                initialDate: '2020-12-01',
-                events: [{
-                        title: 'Call with Dave',
-                        start: '2020-11-18',
-                        end: '2020-11-18',
-                        className: 'p-1 mb-2 px-2 bg-danger'
-                    },
+    </x-app-layout>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
 
-                    {
-                        title: 'Lunch meeting',
-                        start: '2020-11-21',
-                        end: '2020-11-22',
-                        className: 'p-1 mb-2 px-2 bg-warning'
-                    },
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var dateElement = document.getElementById('currentDate');
 
-                    {
-                        title: 'All day conference',
-                        start: '2020-11-29',
-                        end: '2020-11-29',
-                        className: 'p-1 mb-2 px-2 bg-success'
-                    },
+            // Get today's date
+            var today = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var todayString = today.toLocaleDateString('en-US', options);
 
-                    {
-                        title: 'Meeting with Mary',
-                        start: '2020-12-01',
-                        end: '2020-12-01',
-                        className: 'p-1 mb-2 px-2 bg-info'
-                    },
+            // Update the date in the HTML
+            dateElement.innerHTML = `<b>${todayString}</b>`;
 
-                    {
-                        title: 'Winter Hackaton',
-                        start: '2020-12-03',
-                        end: '2020-12-03',
-                        className: 'p-1 mb-2 px-2 bg-danger'
-                    },
+            if (calendarEl) {
+                fetch('/api/expenses')
+                    .then(response => response.json())
+                    .then(data => {
+                        const events = data.map(expense => ({
+                            id: expense.id, // Include an ID for identifying the event
+                            title: expense.company.name + ' - ' + expense.description, // Name of the company and description
+                            start: expense.date,
+                            description: expense.description, // Description of the expense
+                            companyName: expense.company.name, // Add the company name
+                            className: 'p-1 mb-2 px-2 bg-info'
+                        }));
 
-                    {
-                        title: 'Digital event',
-                        start: '2020-12-07',
-                        end: '2020-12-09',
-                        className: 'p-1 mb-2 px-2 bg-warning'
-                    },
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            contentHeight: 'auto',
+                            initialView: 'dayGridMonth', // Show the current month
+                            headerToolbar: {
+                                start: 'prev,next today', // Add navigation buttons
+                                center: 'title',
+                                end: ''
+                            },
+                            selectable: true,
+                            editable: true,
+                            events: events,
+                            eventClick: function(info) {
+                                var event = info.event;
 
-                    {
-                        title: 'Marketing event',
-                        start: '2020-12-10',
-                        end: '2020-12-10',
-                        className: 'p-1 mb-2 px-2 bg-primary'
-                    },
+                                // Populate the modal with event details
+                                document.getElementById('modalCompanyName').textContent = event.extendedProps.companyName;
+                                document.getElementById('modalDescription').textContent = event.extendedProps.description;
+                                document.getElementById('modalDate').textContent = event.startStr;
 
-                    {
-                        title: 'Dinner with Family',
-                        start: '2020-12-19',
-                        end: '2020-12-19',
-                        className: 'p-1 mb-2 px-2 bg-danger'
-                    },
+                                // Show the modal
+                                var expenseModal = new bootstrap.Modal(document.getElementById('expenseModal'));
+                                expenseModal.show();
+                            },
+                            views: {
+                                month: {
+                                    titleFormat: {
+                                        month: "long",
+                                        year: "numeric"
+                                    }
+                                },
+                                agendaWeek: {
+                                    titleFormat: {
+                                        month: "long",
+                                        year: "numeric",
+                                        day: "numeric"
+                                    }
+                                },
+                                agendaDay: {
+                                    titleFormat: {
+                                        month: "short",
+                                        year: "numeric",
+                                        day: "numeric"
+                                    }
+                                }
+                            },
+                        });
 
-                    {
-                        title: 'Black Friday',
-                        start: '2020-12-23',
-                        end: '2020-12-23',
-                        className: 'p-1 mb-2 px-2 bg-info'
-                    },
-
-                    {
-                        title: 'Cyber Week',
-                        start: '2020-12-02',
-                        end: '2020-12-02',
-                        className: 'p-1 mb-2 px-2 bg-warning'
-                    },
-
-                ],
-                views: {
-                    month: {
-                        titleFormat: {
-                            month: "long",
-                            year: "numeric"
-                        }
-                    },
-                    agendaWeek: {
-                        titleFormat: {
-                            month: "long",
-                            year: "numeric",
-                            day: "numeric"
-                        }
-                    },
-                    agendaDay: {
-                        titleFormat: {
-                            month: "short",
-                            year: "numeric",
-                            day: "numeric"
-                        }
-                    }
-                },
-            });
-
-            fullcalendar.render();
+                        calendar.render();
+                    });
+            }
         });
-
-    }
-
-    var ctx = document.getElementById("chart-line-widgets").getContext("2d");
-
-    var gradientStroke3 = ctx.createLinearGradient(0, 100, 0, 0);
-    gradientStroke3.addColorStop(1, 'rgba(27, 70, 194, 0.38)');
-    gradientStroke3.addColorStop(0, 'rgba(94, 114, 228, 0)');
-
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label: "Tasks",
-                tension: 0.3,
-                pointRadius: 2,
-                pointBackgroundColor: "#774DD3",
-                borderColor: "#774DD3",
-                borderWidth: 2,
-                backgroundColor: gradientStroke3,
-                data: [40, 45, 42, 41, 40, 43, 40, 42, 39],
-                maxBarThickness: 6,
-                fill: true
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false,
-                }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
-            scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: false,
-                        drawOnChartArea: false,
-                        drawTicks: false,
-                    },
-                    ticks: {
-                        color: '#252f40',
-                        padding: 10
-                    }
-                },
-                x: {
-                    grid: {
-                        drawBorder: false,
-                        display: false,
-                        drawOnChartArea: false,
-                        drawTicks: false,
-                    },
-                    ticks: {
-                        color: '#252f40',
-                        padding: 10
-                    }
-                },
-            },
-        },
-    });
-</script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
+    </script>

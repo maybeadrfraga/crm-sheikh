@@ -1,31 +1,64 @@
+@props(['companies'])
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 bg-slate-900 fixed-start " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand nav-link d-flex align-items-center m-0"
-            href="#" target="_blank">
+        <a class="navbar-brand nav-link d-flex align-items-center m-0" href="#" target="_blank">
             <!-- <img class="navbar-brand-img" src="../../assets/img/logo-ct.png" alt=""> -->
             <span class="font-weight-bold ms-2">SHEIKHDOM HOLDING</span>
         </a>
     </div>
-    <div class="collapse navbar-collapse px-3  w-auto h-auto" id="sidenav-collapse-main">
-        <ul class="navbar-nav">         
-           
+    <div class="collapse navbar-collapse px-3  w-auto h-100" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+
             <!-- DASHBOARD -->
             <li class="nav-item p-1">
-            <a href="{{ route('dash') }}" class="nav-link text-white opacity-10"
-                    aria-controls="finance" role="button">
-                    <i class="fa fa-home"></i>                    
+                <a href="{{ route('dash') }}" class="nav-link text-white opacity-10" aria-controls="finance"
+                    role="button">
+                    <i class="fa fa-home"></i>
                     <span class="nav-link-text ms-2">Dashboard</span>
                 </a>
             </li>
             <!-- END DASHBOARD -->
 
+            @foreach ($companies as $company)
+                <!-- FINANCE -->
+                <li class="nav-item p-1">
+                    <a data-bs-toggle="collapse" href="#finance-{{ $company->id }}" class="nav-link text-white opacity-10"
+                        aria-controls="finance-{{ $company->id }}" role="button" aria-expanded="false">
+                        <!-- Logo da Empresa -->
+                        <img src="{{ $company->logo ? asset('storage/' . $company->logo) : asset('assets/img/apple-icon.png') }}"
+                            alt="{{ $company->name }}" class="company-logo">
+                        <span class="nav-link-text ms-2">{{ $company->name }}</span>
+                    </a>
+                    <div class="collapse" id="finance-{{ $company->id }}">
+                        <ul class="nav ms-4 border-start">
+                            <li class="nav-item ">
+                                <a class="nav-link text-white opacity-10 {{ is_current_route('expenses.index', ['company' => $company->id]) ? 'active' : '' }} "
+                                    href="{{ route('expenses.index', ['company' => $company->id]) }}">
+                                    <span class="sidenav-mini-icon"> CL </span>
+                                    <span class="sidenav-normal"> List </span>
+                                </a>
+                            </li>
+                            @can('viewAny', App\Models\Company::class)
+                                <li class="nav-item ">
+                                    <a class="nav-link text-white opacity-10 {{ is_current_route('expenses.create', ['company' => $company->id]) ? 'active' : '' }} "
+                                        href="{{ route('expenses.create', ['company' => $company->id]) }}">
+                                        <span class="sidenav-mini-icon"> CC </span>
+                                        <span class="sidenav-normal"> Create </span>
+                                    </a>
+                                </li>
+                            @endcan 
+                        </ul>                </div>
+                </li>
+                <!-- END FINANCE -->
+            @endforeach
+
             <!-- FINANCE -->
-            <li class="nav-item p-1">
+            <!-- <li class="nav-item p-1">
                 <a data-bs-toggle="collapse" href="#finance" class="nav-link text-white opacity-10"
                     aria-controls="finance" role="button" aria-expanded="false">
-                    <i class="fa fa-money"></i>                    
+                    <i class="fa fa-money"></i>
                     <span class="nav-link-text ms-2">Finance</span>
                 </a>
                 <div class="collapse show" id="finance">
@@ -37,25 +70,24 @@
                                 <span class="sidenav-normal"> List </span>
                             </a>
                         </li>
-                        @can('viewAny', App\Models\Company::class)                            
-                                <li class="nav-item ">
-                                    <a class="nav-link text-white opacity-10 {{ is_current_route('expenses.create') ? 'active' : '' }} "
-                                        href="{{ route('expenses.create') }}">
-                                        <span class="sidenav-mini-icon"> CC </span>
-                                        <span class="sidenav-normal"> Create </span>
-                                    </a>
-                                </li>                            
-                        @endcan                        
-                    </ul>
+                        @can('viewAny', App\Models\Company::class)
+                            <li class="nav-item ">
+                                <a class="nav-link text-white opacity-10 {{ is_current_route('expenses.create') ? 'active' : '' }} "
+                                    href="{{ route('expenses.create') }}">
+                                    <span class="sidenav-mini-icon"> CC </span>
+                                    <span class="sidenav-normal"> Create </span>
+                                </a>
+                            </li>
+                        @endcan                     </ul>
                 </div>
-            </li>
+            </li> -->
             <!-- END FINANCE -->
 
             <!-- COMPANIES -->
-            <li class="nav-item p-1">
+            <!-- <li class="nav-item p-1">
                 <a data-bs-toggle="collapse" href="#companies" class="nav-link text-white opacity-10"
                     aria-controls="companies" role="button" aria-expanded="false">
-                    <i class="fa fa-building"></i>                    
+                    <i class="fa fa-building"></i>
                     <span class="nav-link-text ms-2">Companies</span>
                 </a>
                 <div class="collapse show" id="companies">
@@ -67,25 +99,34 @@
                                 <span class="sidenav-normal"> List </span>
                             </a>
                         </li>
-                        @can('viewAny', App\Models\Company::class)                            
-                                <li class="nav-item ">
-                                    <a class="nav-link text-white opacity-10 {{ is_current_route('companies.create') ? 'active' : '' }} "
-                                        href="{{ route('companies.create') }}">
-                                        <span class="sidenav-mini-icon"> CC </span>
-                                        <span class="sidenav-normal"> Create </span>
-                                    </a>
-                                </li>                            
-                        @endcan                        
-                    </ul>
+                        @can('viewAny', App\Models\Company::class)
+                            <li class="nav-item ">
+                                <a class="nav-link text-white opacity-10 {{ is_current_route('companies.create') ? 'active' : '' }} "
+                                    href="{{ route('companies.create') }}">
+                                    <span class="sidenav-mini-icon"> CC </span>
+                                    <span class="sidenav-normal"> Create </span>
+                                </a>
+                            </li>
+                        @endcan                     </ul>
                 </div>
-            </li>
+            </li> -->
             <!-- END COMPANIES -->
+
+            <!-- Calendar -->
+            <li class="nav-item p-1">
+                <a href="{{ route('calendar') }}" class="nav-link text-white opacity-10" aria-controls="finance"
+                    role="button">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-link-text ms-2">Calendar</span>
+                </a>
+            </li>
+            <!-- END Calendar -->
 
             <!-- SETTINGS -->
             <li class="nav-item p-1">
                 <a data-bs-toggle="collapse" href="#asettings" class="nav-link text-white opacity-10"
                     aria-controls="asettings" role="button" aria-expanded="false">
-                    <i class="fa fa-cog"></i>                    
+                    <i class="fa fa-cog"></i>
                     <span class="nav-link-text ms-2">Settings</span>
                 </a>
                 <div class="collapse show" id="asettings">
@@ -118,11 +159,12 @@
                                     </a>
                                 </li>
                             @endcan
-                        @endcan                        
-                    </ul>
+                        @endcan 
+                   </ul>
                 </div>
             </li>
             <!-- END SETTINGS -->
+
             <!-- <li class="mt-3 nav-item">
                 <h6 class=" p-3 pe-2 text-uppercase text-xs font-weight-bolder text-secondary">PAGES</h6>
             </li> -->
@@ -1064,8 +1106,8 @@
             </li> -->
         </ul>
     </div>
-        <div>
-            <!-- <div class="sidenav-footer mx-4 my-3 pt-3">
+    <div>
+        <!-- <div class="sidenav-footer mx-4 my-3 pt-3">
                 <a class="btn bg-gradient-primary inline-block px-6 py-3 mx-auto align-middle transition-all ease-in border-0 rounded-lg select-none" href="https://www.creative-tim.com/product/corporate-ui-dashboard-laravel" target="_blank">
                     FREE DEMO
                 </a>
@@ -1090,4 +1132,17 @@
                 </div>
 
             </div> -->
+        <style>
+            .company-logo {
+                width: 30px;
+                /* Ajuste conforme necessário */
+                height: 30px;
+                /* Ajuste conforme necessário */
+                border-radius: 50%;
+                background-color: white;
+                padding: 5px;
+                /* Ajuste conforme necessário */
+                object-fit: cover;
+            }
+        </style>
 </aside>

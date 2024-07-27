@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ExpenseController extends Controller
 {
@@ -62,4 +63,12 @@ class ExpenseController extends Controller
         $expense->delete();
         return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }
+    public function generateInvoice($id)
+    {
+        $expense = Expense::with('company')->findOrFail($id);
+
+        $pdf = Pdf::loadView('expenses.invoices', compact('expense'));
+        return $pdf->download('invoice-' . $expense->id . '.pdf');
+    }
+    
 }

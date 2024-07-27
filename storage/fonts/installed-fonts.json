@@ -1,0 +1,19 @@
+{
+    "noto sans": {
+        "300": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/noto_sans_300_0df817da3524307ea8700fc6e6293bc9",
+        "normal": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/noto_sans_normal_18839e68396af5418d0fbe561ee407c4",
+        "500": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/noto_sans_500_9bf94c4d382c7693c63472c46f6db5c0",
+        "600": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/noto_sans_600_e9b813e7010854116ce22d9361bb0032",
+        "bold": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/noto_sans_bold_d7f6220b3901174b01bbacd3fe06f769",
+        "800": "noto_sans_800_dab86cf2cfd7c13a1565db14e68703a8"
+    },
+    "open sans": {
+        "300": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/open_sans_300_39ef945f04dffafb40d0e4258ccaa41b",
+        "normal": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/open_sans_normal_3760d4dc48428d77234c57aacbf4be3d",
+        "600": "\/Users\/adrianfraga\/Documents\/crm-sheikh\/storage\/fonts\/\/open_sans_600_b1ce21e0a900a5106e97539d2f082999",
+        "bold": "open_sans_bold_76cc12ba903c653efae07dd0b62d46cf"
+    },
+    "pt mono": {
+        "normal": "pt_mono_normal_cd4c5da3578baead3964399a6bb47d9a"
+    }
+}
